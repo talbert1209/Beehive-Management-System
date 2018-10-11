@@ -5,6 +5,11 @@
         private Worker[] workers;
         private int shiftNumber;
 
+        public Queen(Worker[] workers)
+        {
+            this.workers = workers;
+        }
+
         public bool AssignWork(string job, int shift)
         {
             return false;
