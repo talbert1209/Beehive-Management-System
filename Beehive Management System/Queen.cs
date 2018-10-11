@@ -10,8 +10,14 @@
             this.workers = workers;
         }
 
-        public bool AssignWork(string job, int shift)
+        public bool AssignWork(string job, int shifts)
         {
+            foreach (var worker in workers)
+            {
+                if (worker.DoThisJob(job, shifts))
+                    return true;
+            }
+
             return false;
         }
 
