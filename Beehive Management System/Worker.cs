@@ -32,7 +32,7 @@
         /// <returns></returns>
         public bool DoThisJob(string jobToDo, int shifts)
         {
-            if (!string.IsNullOrEmpty(_currentJob))
+            if (string.IsNullOrEmpty(_currentJob))
             {
                 foreach (var job in _jobsICanDo)
                 {
