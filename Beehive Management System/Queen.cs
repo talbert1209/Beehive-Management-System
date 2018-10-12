@@ -23,7 +23,19 @@
 
         public string WorkTheNextShift()
         {
-            return "Shift Report";
+            shiftNumber++;
+            var shiftReport = $@"Report for Shift #{shiftNumber}";
+            for (int i = 0; i < workers.Length; i++)
+            {
+                if (workers[i].DidYouFinish())
+                    shiftReport += $"\r\nWorker #{i + 1} finished the job!";
+                else if (!string.IsNullOrEmpty(workers[i].CurrentJob))
+                    shiftReport +=
+                        $"\r\nWorker #{i + 1} is doing {workers[i].CurrentJob} for {workers[i].ShiftsLeft} more shifts.";
+                else
+                    shiftReport += $"\r\nWorker #{i + 1} is not working.";
+            }
+            return shiftReport;
         }
     }
 }

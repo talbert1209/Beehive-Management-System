@@ -35,7 +35,7 @@ namespace Beehive_Management_System
 
         private void nextShift_Click(object sender, EventArgs e)
         {
-
+            reportBox.Text = _queen.WorkTheNextShift();
         }
     }
 }
