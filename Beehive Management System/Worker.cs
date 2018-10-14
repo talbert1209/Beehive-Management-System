@@ -1,7 +1,9 @@
 ﻿namespace Beehive_Management_System
 {
-    public class Worker
+    public class Worker : Bee
     {
+        private const double _honeyUnitsPerShiftWorked = .65;
+
         public string CurrentJob
         {
             get { return _currentJob; }
@@ -17,7 +19,8 @@
         private int _shiftsWorked;
         private string _currentJob = "";
 
-        public Worker(string[] jobs)
+        public Worker(string[] jobs, double weightMg)
+            : base(weightMg)
         {
             _jobsICanDo = jobs;
         }
@@ -71,6 +74,17 @@
             }
 
             return false;
+        }
+
+        public override double HoneyConsumptionRate()
+        {
+            var idolConsumption = base.HoneyConsumptionRate();
+            if (!string.IsNullOrEmpty(_currentJob))
+            {
+                idolConsumption += _honeyUnitsPerShiftWorked;
+            }
+
+            return idolConsumption;
         }
     }
 }
